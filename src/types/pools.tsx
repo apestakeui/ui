@@ -16,6 +16,15 @@ export const poolStrings = [
   "Unknown",
 ];
 
+export const poolTickers = [
+  "$APE",
+  "BAYC",
+  "MAYC",
+  "BAKC",
+  // Overflow
+  "UNKWN",
+];
+
 // Actions and UI strings
 export enum Actions {
   "stake" = 0,

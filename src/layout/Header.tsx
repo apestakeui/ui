@@ -1,4 +1,4 @@
-import { Button, HStack, Text } from "@chakra-ui/react";
+import { Button, HStack, Link, Text } from "@chakra-ui/react";
 import {
   // Mainnet,
   shortenAddress,
@@ -17,9 +17,23 @@ const Header = () => {
     activateBrowserWallet();
   };
 
+  function visitApeCoin() {
+    window.open("https://apecoin.com/");
+  }
+
+  function visitGithub() {
+    window.open("https://github.com/apestakeui/ui");
+  }
+
   return (
     <HStack as="header" width="full" justify="space-around" align="center">
       <Text>{account ? ens ?? shortenAddress(account) : "Not logged in"}</Text>
+      <Button onClick={visitApeCoin}>
+        Visit ApeCoin
+      </Button>
+      <Button onClick={visitGithub}>
+        Contribute on GitHub
+      </Button>
       <HStack>
         {account ? (
           <Button onClick={deactivate}>Disconnect Wallet</Button>

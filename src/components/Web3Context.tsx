@@ -88,8 +88,13 @@ export function Web3Provider({ children }: { children: React.ReactNode }) {
   // Interaction variables
   const [web3Enabled, setWeb3Enabled] = useState(false);
   const [onSupportedChain, setOnSupportedChain] = useState(false);
+
+  let currentChainId = 1; // Default to ETH
+  if (chainId !== undefined) {
+    currentChainId = chainId;
+  }
   const [provider, setProvider] = useState<ethers.providers.Provider>(
-    new ethers.providers.JsonRpcProvider(resolveData(5).provider)
+    new ethers.providers.JsonRpcProvider(resolveData(currentChainId).provider)
   );
   // // Caching so we don't need to hit the chain. replace with a useMemo
   // const [baycBaseUri, setBaycBaseUri] = useState<string>("");
@@ -99,35 +104,35 @@ export function Web3Provider({ children }: { children: React.ReactNode }) {
   // Contract variables
   const [stakingContract, setStakingContract] = useState<ethers.Contract>(
     new ethers.Contract(
-      resolveData(5).stakingContractAddress,
+      resolveData(currentChainId).stakingContractAddress,
       stakingContractAbi,
       provider
     )
   );
   const [apeCoinContract, setApeCoinContract] = useState<ethers.Contract>(
     new ethers.Contract(
-      resolveData(5).coinContractAddress,
+      resolveData(currentChainId).coinContractAddress,
       coinContractAbi,
       provider
     )
   );
   const [baycContract, setBaycContract] = useState<ethers.Contract>(
     new ethers.Contract(
-      resolveData(5).baycContractAddress,
+      resolveData(currentChainId).baycContractAddress,
       nftContractAbi,
       provider
     )
   );
   const [maycContract, setMaycContract] = useState<ethers.Contract>(
     new ethers.Contract(
-      resolveData(5).maycContractAddress,
+      resolveData(currentChainId).maycContractAddress,
       nftContractAbi,
       provider
     )
   );
   const [bakcContract, setBakcContract] = useState<ethers.Contract>(
     new ethers.Contract(
-      resolveData(5).bakcContractAddress,
+      resolveData(currentChainId).bakcContractAddress,
       nftContractAbi,
       provider
     )
@@ -184,7 +189,7 @@ export function Web3Provider({ children }: { children: React.ReactNode }) {
     setBakcContract(
       new ethers.Contract(curr.bakcContractAddress, nftContractAbi, provider)
     );
-  }, [provider]);
+  }, [provider, chainId]);
 
   const baycUri = useContractFunctionCall(baycContract, "baseURI", []) ?? "";
   const maycUri = useContractFunctionCall(maycContract, "tokenURI", [0]) ?? "";

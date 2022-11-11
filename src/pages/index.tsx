@@ -103,12 +103,24 @@ const Home = () => {
         Welcome to ApeStake
       </Heading>
       <Text>
-        Only submit transactions to official ApeStake smart contract addresses:{" "}
+        Only submit transactions to official ApeStake smart contract:{" "}
+        <Text
+          as="a"
+          href="https://etherscan.io/address/0x831e0c7A89Dbc52a1911b78ebf4ab905354C96Ce"
+          target="_blank"
+          rel="noreferrer"
+          fontWeight="bold"
+        >
+          0x831e0c7A89Dbc52a1911b78ebf4ab905354C96Ce
+        </Text>
+        <br></br>
+        This should match the official documentation at {" "}
         <Text
           as="a"
           href="https://docs.apestake.io/#/"
           target="_blank"
           rel="noreferrer"
+          fontWeight="bold"
         >
           https://docs.apestake.io/#/
         </Text>
@@ -237,6 +249,8 @@ const Home = () => {
               isFitted
               index={wizardPacket.poolId}
               onChange={(index) => {
+                // Clear packet when starting a new custom action
+                setWizardPacket(defaultPacket);
                 setWizardPacket(
                   produce((draft) => {
                     draft.poolId = index;
