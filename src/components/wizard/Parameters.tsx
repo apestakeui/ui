@@ -19,6 +19,7 @@ import { useState } from "react";
 import { useWeb3Provider } from "components/Web3Context";
 import type { Packet } from "types/pools";
 import { Actions, Pools, poolStrings } from "types/pools";
+import { DRAFT_STATE } from "immer/dist/internal";
 
 interface ParameterProps {
   packet: Packet;
@@ -128,52 +129,59 @@ const Parameters = (props: ParameterProps) => {
   const secondaryPredicate = secondaryLimit.some((x) => {
     return x === packet.pair.mainTokenId ?? 0;
   });
+  let secondaryContent = (<Text>No pair input required.</Text>);
 
-  const secondaryContent = (
-    <FormControl>
-      <Tabs
-        pt="2rem"
-        variant="soft-rounded"
-        index={selector}
-        onChange={(index) => {
-          setPacket(
-            produce(packet, (draft) => {
-              draft.pair = {
-                mainTypePoolId: index,
-              };
-            })
-          );
-          setSelector(index);
-        }}
-      >
-        <TabList>
-          {/* Lining up the indexes */}
-          <Tab hidden />
-          <Tab key={Pools.bayc}>{poolStrings[Pools.bayc]}</Tab>
-          <Tab key={Pools.mayc}>{poolStrings[Pools.mayc]}</Tab>
-        </TabList>
-      </Tabs>
+  // When withdrawing/claiming, the paired NFT can't be set by the user
+  // unless they are using the action flow directly
+  if (groundTruth.action! === Actions.stake ||
+      (packet.pair.mainTokenId === 0 ||
+       packet.pair.mainTokenId === undefined)) {
+    secondaryContent = (
+      <FormControl>
+        <Tabs
+          pt="2rem"
+          variant="soft-rounded"
+          index={selector}
+          onChange={(index) => {
+            setPacket(
+              produce(packet, (draft) => {
+                draft.pair = {
+                  mainTypePoolId: index,
+                };
+              })
+            );
+            setSelector(index);
+          }}
+        >
+          <TabList>
+            {/* Lining up the indexes */}
+            <Tab hidden />
+            <Tab key={Pools.bayc}>{poolStrings[Pools.bayc]}</Tab>
+            <Tab key={Pools.mayc}>{poolStrings[Pools.mayc]}</Tab>
+          </TabList>
+        </Tabs>
 
-      <Text>{secondaryLabel}</Text>
-      <Input
-        isInvalid={!secondaryPredicate}
-        value={packet.pair?.mainTokenId ?? 0}
-        type="number"
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          setPacket(
-            produce(packet, (draft) => {
-              draft.pair.mainTokenId = parseInt(e.target.value, 10);
-            })
-          );
-        }}
-        placeholder="Enter ID"
-        size="sm"
-      />
-      <FormHelperText hidden={secondaryPredicate}>
-        {secondaryError}
-      </FormHelperText>
-    </FormControl>
-  );
+        <Text>{secondaryLabel}</Text>
+        <Input
+          isInvalid={!secondaryPredicate}
+          value={packet.pair?.mainTokenId ?? 0}
+          type="number"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setPacket(
+              produce(packet, (draft) => {
+                draft.pair.mainTokenId = parseInt(e.target.value, 10);
+              })
+            );
+          }}
+          placeholder="Enter ID"
+          size="sm"
+        />
+        <FormHelperText hidden={secondaryPredicate}>
+          {secondaryError}
+        </FormHelperText>
+      </FormControl>
+    );
+  }
 
   return (
     <VStack spacing="1rem" w="30%">
