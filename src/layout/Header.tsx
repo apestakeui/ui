@@ -1,6 +1,6 @@
-import { Button, HStack, Link, Text } from "@chakra-ui/react";
+import { Button, HStack, Link} from "@chakra-ui/react";
 import {
-  Mainnet,
+  // Mainnet,
   shortenAddress,
   useEthers,
 } from "@usedapp/core";
@@ -35,9 +35,9 @@ const Header = () => {
 
   return (
     <HStack as="header" width="full" justify="space-around" align="center">
-      <Button onClick={visitApeCoin}>
-        Visit ApeCoin
-      </Button>
+      <Link onClick={visitApeCoin}>
+        ApeCoin.com
+      </Link>
       <Button onClick={visitGithub}>
         Contribute on GitHub
       </Button>
