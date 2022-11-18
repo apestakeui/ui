@@ -2,7 +2,6 @@ import "styles/globals.css";
 
 import { DAppProvider, Goerli, Mainnet } from "@usedapp/core";
 import type { Config } from "@usedapp/core";
-import { getDefaultProvider } from "ethers";
 import { DefaultSeo } from "next-seo";
 import type { AppProps } from "next/app";
 import Head from "next/head";

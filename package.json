@@ -22,10 +22,11 @@
     "@chakra-ui/react": "^2.3.4",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@fontsource/roboto-mono": "^4.5.8",
     "@metamask/providers": "^10.1.0",
-    "@usedapp/core": "^1.1.5",
-    "@spanning/utils": "^0.0.1",
     "@spanning/contracts": "^0.0.1",
+    "@spanning/utils": "^0.0.1",
+    "@usedapp/core": "^0.12.9",
     "chakra-ui-steps": "^1.8.0",
     "ethers": "^5.7.2",
     "framer-motion": "^7.3.6",
@@ -36,7 +37,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-fast-marquee": "^1.3.5",
-    "react-icons": "^4.6.0"
+    "react-icons": "^4.6.0",
+    "web3": "^1.7.5"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^17.1.0",

@@ -33,6 +33,7 @@ import type { Packet } from "types/pools";
 import {
   defaultPacket,
   poolStrings,
+  poolTickers,
   Pools,
   actionStrings,
   Actions,
@@ -100,10 +101,10 @@ const Home = () => {
       {/* Front Matter */}
       <NextSeo title="ApeStake" />
       <Heading as="h1" size="lg">
-        Welcome to ApeStake
+        Welcome to ApeCoin Staking
       </Heading>
       <Text>
-        Only submit transactions to official ApeStake smart contract:{" "}
+        Staking Smart Contract:{" "}
         <Text
           as="a"
           href="https://etherscan.io/address/0x831e0c7A89Dbc52a1911b78ebf4ab905354C96Ce"
@@ -114,7 +115,7 @@ const Home = () => {
           0x831e0c7A89Dbc52a1911b78ebf4ab905354C96Ce
         </Text>
         <br></br>
-        This should match the official documentation at {" "}
+        Verify address at {" "}
         <Text
           as="a"
           href="https://docs.apestake.io/#/"
@@ -201,6 +202,7 @@ const Home = () => {
                       },
                     ],
                   ]}
+                  staked={true}
                 />
               );
             })}
@@ -227,6 +229,7 @@ const Home = () => {
                       },
                     ],
                   ]}
+                  staked={false}
                 />
               );
             })}
@@ -352,8 +355,26 @@ const Home = () => {
           </Step>
         </Steps>
       </Flex>
+      {(wizardPacket.poolId !== Pools.coin &&
+            wizardPacket.action === Actions.stake) && (
+              <Flex width="80%" justify="center">
+              <Text>Staked $APE and unclaimed rewards accrue
+                to the commited {poolTickers[wizardPacket.poolId]} in the
+                NFT pools. Only the wallet holding the NFT
+                can claim the staked $APE and unclaimed rewards.</Text>
+              </Flex>
+            )}
       {/* Wizard progression buttons */}
       <Flex width="80%" justify="flex-end">
+          {activeStep !== 4 && (<Button
+          isDisabled={activeStep === 0}
+          mr={4}
+          onClick={reset}
+          size="sm"
+          variant="ghost"
+        >
+          Reset
+        </Button>)}
         <Button
           isDisabled={activeStep === 0}
           mr={4}

@@ -125,9 +125,10 @@ const Parameters = (props: ParameterProps) => {
     .map((x) => {
       return x.mainTokenId;
     });
-  const secondaryError = `Must be of id: ${secondaryLimit.join()}`;
+  const secondaryError = packet.pair.mainTypePoolId === Pools.coin ?
+    `Select a pair pool`: `Must be of id: ${secondaryLimit.join()}`;
   const secondaryPredicate = secondaryLimit.some((x) => {
-    return x === packet.pair.mainTokenId ?? 0;
+    return (packet.pair.mainTypePoolId !== Pools.coin && x === packet.pair.mainTokenId) ?? 0;
   });
   let secondaryContent = (<Text>No pair input required.</Text>);
 
@@ -160,8 +161,9 @@ const Parameters = (props: ParameterProps) => {
             <Tab key={Pools.mayc}>{poolStrings[Pools.mayc]}</Tab>
           </TabList>
         </Tabs>
-
+        {packet.pair.mainTypePoolId !== Pools.coin && (
         <Text>{secondaryLabel}</Text>
+        )}
         <Input
           isInvalid={!secondaryPredicate}
           value={packet.pair?.mainTokenId ?? 0}

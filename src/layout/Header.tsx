@@ -1,20 +1,28 @@
-import { Button, HStack, Link, Text } from "@chakra-ui/react";
+import { Button, HStack, Link} from "@chakra-ui/react";
 import {
   // Mainnet,
   shortenAddress,
   useEthers,
-  useLookupAddress,
 } from "@usedapp/core";
 
 import ThemeToggle from "./ThemeToggle";
+import { useWeb3Provider } from "components/Web3Context";
 
 const Header = () => {
-  const { account, deactivate, activateBrowserWallet } = useEthers();
-  const { ens } = useLookupAddress(account);
+  const { account } = useEthers();
+  const {
+    activateWallet,
+    deactivateWallet,
+    switchChain,
+  } = useWeb3Provider();
 
   const connect = async () => {
-    // await switchNetwork(Mainnet.chainId);
-    activateBrowserWallet();
+    activateWallet();
+    // switchChain(Mainnet.chainId);
+  };
+
+  const deactivate = async () => {
+    deactivateWallet();
   };
 
   function visitApeCoin() {
@@ -27,16 +35,15 @@ const Header = () => {
 
   return (
     <HStack as="header" width="full" justify="space-around" align="center">
-      <Text>{account ? ens ?? shortenAddress(account) : "Not logged in"}</Text>
-      <Button onClick={visitApeCoin}>
-        Visit ApeCoin
-      </Button>
+      <Link onClick={visitApeCoin}>
+        ApeCoin.com
+      </Link>
       <Button onClick={visitGithub}>
         Contribute on GitHub
       </Button>
       <HStack>
         {account ? (
-          <Button onClick={deactivate}>Disconnect Wallet</Button>
+          <Button onClick={deactivate}>Disconnect {shortenAddress(account)}</Button>
         ) : (
           <Button onClick={connect}>Connect Wallet</Button>
         )}
