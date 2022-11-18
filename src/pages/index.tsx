@@ -356,6 +356,15 @@ const Home = () => {
       </Flex>
       {/* Wizard progression buttons */}
       <Flex width="80%" justify="flex-end">
+          {activeStep !== 4 && (<Button
+          isDisabled={activeStep === 0}
+          mr={4}
+          onClick={reset}
+          size="sm"
+          variant="ghost"
+        >
+          Reset
+        </Button>)}
         <Button
           isDisabled={activeStep === 0}
           mr={4}
