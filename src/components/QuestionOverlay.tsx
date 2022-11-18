@@ -41,12 +41,13 @@ import {
           <MenuList bg={colorMode === "light" ? "gray.100" : "gray.700"} border="none" p="2rem" opacity="60%">
             {/* Include hidden menu to prevent autofocus */}
             <MenuItem hidden />
-            <VStack align="start" w="1400px">
+            <VStack align="start" w="850px">
               {/* Helper text */}
               <Text color="brand.white" fontWeight="bold">
                  STAKING AND UNCLAIMED REWARDS
               </Text>
-              <ul color="brand.white">
+              <Text color="brand.white" fontSize="12px">
+              <ul color="brand.white" >
                 <li>Unclaimed rewards can be claimed at any time without the need to also claim
                     staked APE and without affecting the commitment status of an NFT</li>
                 <li>All accrued APE generated from a stake is claimed at once, when initiating a claim. </li>
@@ -58,14 +59,16 @@ import {
                     IF YOU SELL OR TRANSFER YOUR NFT, THE NEW WALLET WILL BE ABLE TO CLAIM
                     YOUR ORIGINAL STAKED AMOUNT + ANY ACCRUED REWARDS</li>
               </ul>
+              </Text>
             </VStack>
             <Spacer h="1rem" />
-            <VStack align="start" w="1400px">
+            <VStack align="start" w="850px">
               {/* Helper text */}
               <Text color="brand.white" fontWeight="bold">
                  CLAIMING AND ALLOCATIONS
               </Text>
-              <Text>Staking minimum is 1 $APE </Text>
+              <Text fontSize="12px">Staking minimum is 1 $APE </Text>
+              <Text color="brand.white" fontSize="12px">
               <ul color="brand.white">
                  <li>APE ONLY: No NFTs required. The total staking allocation for this pool is 30,000,000 $APE in Year 1.
                     Staked APE and accrued rewards can be claimed directly by the original staking wallet. </li>
@@ -84,6 +87,7 @@ import {
                     the owner of the BAYC or MAYC is entitled to the staked amount, whereas the owner of the BAKC is 
                     entitled to any unclaimed rewards associated with the staking position.</li>
               </ul>
+              </Text>
             </VStack>
             {/* Docs button */}
             <MenuItem
