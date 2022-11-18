@@ -81,7 +81,7 @@ const PositionCard = (props: PositionCardProps) => {
           <Text>{`Staked $APE: ${deposited.toFixed(3)}`}</Text>
       )}
       {staked && unclaimed > 0 && (
-          <Text>{`Pending Reward: ${unclaimed.toFixed(3)}`}</Text>
+          <Text>{`Unclaimed Reward: ${unclaimed.toFixed(3)}`}</Text>
       )}
       {!staked && poolId === Pools.coin && (
         <Text>{`$APE: ${userBalance.toFixed(3)}`}</Text>
