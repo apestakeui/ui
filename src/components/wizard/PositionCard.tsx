@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 
 import { useWeb3Provider } from "components/Web3Context";
 import type { Packet } from "types/pools";
-import { Pools, poolStrings } from "types/pools";
+import { Pools, poolTickers } from "types/pools";
 
 function generateAssetString(
   pool: Pools | undefined,
   token: number | undefined
 ) {
-  return <Text>{`${poolStrings[Number(pool)] ?? "ERROR"} ${token ?? "ERROR"}`}</Text>;
+  return <Text>{`${poolTickers[Number(pool)] ?? "ERROR"}# ${token ?? "ERROR"}`}</Text>;
 }
 
 function generateURL(ifps: string): string {
@@ -77,7 +77,7 @@ const PositionCard = (props: PositionCardProps) => {
       {poolId === Pools.bakc && pair.mainTypePoolId !== Pools.coin &&
         generateAssetString(pair.mainTypePoolId, pair.mainTokenId)}
       {deposited > 0 && (
-          <Text>{`Staked Coin: ${deposited.toFixed(3)}`}</Text>
+          <Text>{`Staked $APE: ${deposited.toFixed(3)}`}</Text>
       )}
       {unclaimed > 0 && (
           <Text>{`Pending Reward: ${unclaimed.toFixed(3)}`}</Text>

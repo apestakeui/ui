@@ -34,7 +34,7 @@ export enum Actions {
 export const actionStrings = [
   "Stake Assets",
   "Claim Rewards",
-  "Withdraw funds",
+  "Unstake",
   // Overflow
   "Unknown",
 ];

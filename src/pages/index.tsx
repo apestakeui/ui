@@ -100,10 +100,10 @@ const Home = () => {
       {/* Front Matter */}
       <NextSeo title="ApeStake" />
       <Heading as="h1" size="lg">
-        Welcome to ApeStake
+        Welcome to ApeCoin Staking
       </Heading>
       <Text>
-        Only submit transactions to official ApeStake smart contract:{" "}
+        Staking Smart Contract:{" "}
         <Text
           as="a"
           href="https://etherscan.io/address/0x831e0c7A89Dbc52a1911b78ebf4ab905354C96Ce"
@@ -114,7 +114,7 @@ const Home = () => {
           0x831e0c7A89Dbc52a1911b78ebf4ab905354C96Ce
         </Text>
         <br></br>
-        This should match the official documentation at {" "}
+        Verify address at {" "}
         <Text
           as="a"
           href="https://docs.apestake.io/#/"
