@@ -17,6 +17,7 @@ import {
 } from "../constants";
 import type { Asset, Packet } from "types/pools";
 import { Actions, Pools } from "types/pools";
+import { useSwitchChain } from "../hooks/useSwitchChain";
 
 function useContractFunctionCallFull(
   contract: ethers.Contract,
@@ -51,7 +52,7 @@ interface Web3ContextProps {
   // Wallet
   activateWallet: () => void;
   deactivateWallet: () => void;
-  // switchChain: (chainId: number) => void;
+  switchChain: (chainId: number) => void;
 
   // Contracts
   stakingContract: ethers.Contract;
@@ -83,7 +84,7 @@ export function Web3Provider({ children }: { children: React.ReactNode }) {
   const { activateBrowserWallet, deactivate, error } = useEthers();
   const account = useNetwork().network.accounts[0];
   const { chainId } = useNetwork().network;
-  // const { switchToChain } = useSwitchChain();
+  const { switchToChain } = useSwitchChain();
 
   // Interaction variables
   const [web3Enabled, setWeb3Enabled] = useState(false);
@@ -96,6 +97,11 @@ export function Web3Provider({ children }: { children: React.ReactNode }) {
   const [provider, setProvider] = useState<ethers.providers.Provider>(
     new ethers.providers.JsonRpcProvider(resolveData(currentChainId).provider)
   );
+
+  const switchChain = (chainId: number) => {
+    switchToChain(chainId.toString());
+  };
+
   // // Caching so we don't need to hit the chain. replace with a useMemo
   // const [baycBaseUri, setBaycBaseUri] = useState<string>("");
   // const [maycBaseUri, setMaycBaseUri] = useState<string>("");
@@ -369,7 +375,7 @@ export function Web3Provider({ children }: { children: React.ReactNode }) {
       // Wallet
       activateWallet: activateBrowserWallet,
       deactivateWallet: deactivate,
-      // switchChain,
+      switchChain,
 
       // Contracts
       stakingContract,
