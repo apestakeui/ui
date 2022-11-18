@@ -1,3 +1,4 @@
+import '@fontsource/roboto-mono'; 
 import { ChakraProvider } from "@chakra-ui/react";
 
 import customTheme from "styles/theme";
