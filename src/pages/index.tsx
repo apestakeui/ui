@@ -33,6 +33,7 @@ import type { Packet } from "types/pools";
 import {
   defaultPacket,
   poolStrings,
+  poolTickers,
   Pools,
   actionStrings,
   Actions,
@@ -354,6 +355,15 @@ const Home = () => {
           </Step>
         </Steps>
       </Flex>
+      {(wizardPacket.poolId !== Pools.coin &&
+            wizardPacket.action === Actions.stake) && (
+              <Flex width="80%" justify="center">
+              <Text>Staked $APE and unclaimed rewards accrue
+                to the commited {poolTickers[wizardPacket.poolId]} in the
+                NFT pools. Only the wallet holding the NFT
+                can claim the staked $APE and unclaimed rewards.</Text>
+              </Flex>
+            )}
       {/* Wizard progression buttons */}
       <Flex width="80%" justify="flex-end">
           {activeStep !== 4 && (<Button
