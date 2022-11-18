@@ -247,7 +247,7 @@ export function Web3Provider({ children }: { children: React.ReactNode }) {
   const unstaked =
     allData
       .filter((x: any) => {
-        return x.deposited < 1e-6;
+        return x.deposited < 1e-6 || (x.poolId == Pools.coin && userBalance > 1e-6);
       })
       .map(convertTypes) ?? [];
 

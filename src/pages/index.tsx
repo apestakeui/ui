@@ -201,6 +201,7 @@ const Home = () => {
                       },
                     ],
                   ]}
+                  staked={true}
                 />
               );
             })}
@@ -227,6 +228,7 @@ const Home = () => {
                       },
                     ],
                   ]}
+                  staked={false}
                 />
               );
             })}

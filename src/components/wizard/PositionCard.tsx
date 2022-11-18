@@ -21,12 +21,13 @@ interface PositionCardProps {
   position: Packet;
   // Name and onClick for buttons
   actions: [string, (newVal: Packet) => void][];
+  staked: boolean;
 }
 
 const PositionCard = (props: PositionCardProps) => {
-  const { position, actions } = props;
+  const { position, actions, staked } = props;
   const { poolId, tokenId, deposited, unclaimed, pair } = position;
-  const { baycUri, maycUri, bakcUri } = useWeb3Provider();
+  const { baycUri, maycUri, bakcUri, userBalance } = useWeb3Provider();
   const [imgUrl, setImgUrl] = useState(
     "/images/ApeCoin.png"
   );
@@ -76,11 +77,14 @@ const PositionCard = (props: PositionCardProps) => {
       {poolId !== Pools.coin && generateAssetString(poolId, tokenId)}
       {poolId === Pools.bakc && pair.mainTypePoolId !== Pools.coin &&
         generateAssetString(pair.mainTypePoolId, pair.mainTokenId)}
-      {deposited > 0 && (
+      {staked && deposited > 0 && (
           <Text>{`Staked $APE: ${deposited.toFixed(3)}`}</Text>
       )}
-      {unclaimed > 0 && (
+      {staked && unclaimed > 0 && (
           <Text>{`Pending Reward: ${unclaimed.toFixed(3)}`}</Text>
+      )}
+      {!staked && poolId === Pools.coin && (
+        <Text>{`$APE: ${userBalance.toFixed(3)}`}</Text>
       )}
       {actions.map((x) => {
         // 0: label
