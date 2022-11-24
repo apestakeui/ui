@@ -1,9 +1,9 @@
 # apestake-demo
 
 ## How to Run (Mac/Ubuntu)
-1. Download the code from GitHub
+1. [Download the code from GitHub](https://sites.northwestern.edu/researchcomputing/resources/downloading-from-github/#:~:text=To%20do%20this%2C%20go%20to,likely%20in%20your%20Downloads%20folder.)
 2. Install Node here: [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
-3. Click on `run-mac` in your file explorer
+3. Click on `run-mac` in your file explorer. Note: You may have to [enable running an app from an unknown developer.](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unidentified-developer-mh40616/mac)
 4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. 
 
 ## How to run the project Locally via CLI
