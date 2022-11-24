@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# Move to the script location
+script_full_path=$(dirname "$0")
+cd $script_full_path
+
+if which node > /dev/null
+  then
+    echo "node is installed, skipping..."
+  else
+    echo "Make sure Node is downloaded first here: https://nodejs.org/en/download/"
+fi
+
+
+
+if which yarn > /dev/null
+  then
+    echo "yarn is installed, skipping..."
+  else
+    # install yarn
+    curl -o- -L https://yarnpkg.com/install.sh | bash
+
+    # export yarn path
+    source ~/.bashrc
+fi
+
+
+# install dependencies for app
+yarn install
+
+# launch app to: http://localhost:3000/
+yarn dev
