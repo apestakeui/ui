@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Move to the script location
+script_full_path=$(dirname "$0")
+cd $script_full_path
+
 if which node > /dev/null
   then
     echo "node is installed, skipping..."
@@ -17,12 +21,12 @@ if which yarn > /dev/null
     curl -o- -L https://yarnpkg.com/install.sh | bash
 
     # export yarn path
-    export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+    source ~/.bashrc
 fi
 
 
 # install dependencies for app
-# yarn install
+yarn install
 
 # launch app to: http://localhost:3000/
 yarn dev

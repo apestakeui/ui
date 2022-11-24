@@ -2,8 +2,9 @@
 
 ## How to Run (Mac/Ubuntu)
 1. Download the code from GitHub
-2. Click on `run-mac` in your file explorer
-3. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. 
+2. Install Node here: [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
+3. Click on `run-mac` in your file explorer
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. 
 
 ## How to run the project Locally via CLI
 1. After cloning the project, run this command: `yarn` or `yarn install`
