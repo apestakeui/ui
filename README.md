@@ -1,6 +1,11 @@
 # apestake-demo
 
-## How to Run the project Locally
+## How to Run (Mac/Ubuntu)
+1. Download the code from GitHub
+2. Click on `run-mac` in your file explorer
+3. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. 
+
+## How to run the project Locally via CLI
 1. After cloning the project, run this command: `yarn` or `yarn install`
 
 2. Then, run the development server:
