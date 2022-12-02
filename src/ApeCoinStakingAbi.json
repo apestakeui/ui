@@ -1,4 +1,7 @@
-[
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "ApeCoinStaking",
+  "abi": [
 	{
 		"inputs": [
 			{
@@ -1917,3 +1920,4 @@
 		"type": "function"
 	}
 ]
+}
