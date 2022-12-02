@@ -343,16 +343,12 @@ export function Web3Provider({ children }: { children: React.ReactNode }) {
           amount: deposited,
           isUncommit: input.uncommit,
         };
-        console.log(deposited);
-        console.log(input.uncommit);
-        /*
         if (pairPool === Pools.bayc) {
           realStake.withdrawBAKC([position], []);
         }
         if (pairPool === Pools.mayc) {
           realStake.withdrawBAKC([], [position]);
         }
-        */
       }
     }
   };

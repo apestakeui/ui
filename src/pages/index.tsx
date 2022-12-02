@@ -290,6 +290,7 @@ const Home = () => {
                 setWizardPacket(
                   produce((draft) => {
                     draft.action = index;
+                    draft.uncommit = false;
                   })
                 );
               }}
