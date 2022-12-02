@@ -197,6 +197,7 @@ const Home = () => {
                         setWizardPacket({
                           ...newVal,
                           action: Actions.withdraw,
+                          uncommit: true,
                         });
                         jumpToParameters();
                       },
