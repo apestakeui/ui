@@ -68,6 +68,7 @@ const Parameters = (props: ParameterProps) => {
           setPacket(
             produce(packet, (draft) => {
               draft.deposited = parseInt(e.target.value, 10);
+              draft.uncommit = draft.deposited >= amountLimit;
             })
           );
         }}

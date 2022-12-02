@@ -234,6 +234,7 @@ export function Web3Provider({ children }: { children: React.ReactNode }) {
       },
       deposited: parseFloat(formatEther(x.deposited)),
       unclaimed: parseFloat(formatEther(x.unclaimed)),
+      uncommit: x.uncommit,
     };
   };
 
@@ -268,6 +269,7 @@ export function Web3Provider({ children }: { children: React.ReactNode }) {
     const { action } = input;
     const pool = input.poolId;
     const deposited = parseEther(input.deposited.toString());
+
     // Here comes some combinatorial explosion, shrug
     if (action === Actions.stake) {
       if (pool === Pools.coin) {
@@ -339,6 +341,7 @@ export function Web3Provider({ children }: { children: React.ReactNode }) {
           mainTokenId: input.pair!.mainTokenId,
           bakcTokenId: input.tokenId,
           amount: deposited,
+          isUncommit: input.uncommit,
         };
         if (pairPool === Pools.bayc) {
           realStake.withdrawBAKC([position], []);

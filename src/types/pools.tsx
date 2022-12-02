@@ -56,6 +56,9 @@ export interface Packet {
   // Amounts
   deposited: number;
   unclaimed: number;
+  // If withdrawing the full deposited amount
+  // Used to prevent BAKC withdrawal front-running
+  uncommit: boolean;
 }
 
 export const defaultPacket: Packet = {
@@ -65,6 +68,7 @@ export const defaultPacket: Packet = {
   deposited: 0,
   unclaimed: 0,
   pair: { mainTokenId: 0, mainTypePoolId: 0 },
+  uncommit: true,
 };
 
 export const packetUi = (input: Packet) => {

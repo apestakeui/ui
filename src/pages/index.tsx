@@ -197,6 +197,7 @@ const Home = () => {
                         setWizardPacket({
                           ...newVal,
                           action: Actions.withdraw,
+                          uncommit: true,
                         });
                         jumpToParameters();
                       },
@@ -289,6 +290,7 @@ const Home = () => {
                 setWizardPacket(
                   produce((draft) => {
                     draft.action = index;
+                    draft.uncommit = false;
                   })
                 );
               }}
