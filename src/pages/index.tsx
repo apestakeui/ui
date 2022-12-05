@@ -107,12 +107,12 @@ const Home = () => {
         Staking Smart Contract:{" "}
         <Text
           as="a"
-          href="https://etherscan.io/address/0x831e0c7A89Dbc52a1911b78ebf4ab905354C96Ce"
+          href="https://etherscan.io/address/0x5954aB967Bc958940b7EB73ee84797Dc8a2AFbb9"
           target="_blank"
           rel="noreferrer"
           fontWeight="bold"
         >
-          0x831e0c7A89Dbc52a1911b78ebf4ab905354C96Ce
+          0x5954aB967Bc958940b7EB73ee84797Dc8a2AFbb9
         </Text>
         <br></br>
         Verify address at {" "}
