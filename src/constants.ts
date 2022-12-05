@@ -20,7 +20,7 @@ const chainData: ChainMap = {
     // RPC: Replace with custom RPCs for performance and rate limit improvements
     provider: "https://rpc.ankr.com/eth",
     // TODO: get Mainnet addresses for staking contract
-    stakingContractAddress: "0xeF37717B1807a253c6D140Aca0141404D23c26D4",
+    stakingContractAddress: "0x5954aB967Bc958940b7EB73ee84797Dc8a2AFbb9",
     coinContractAddress: "0x4d224452801aced8b2f0aebe155379bb5d594381",
     baycContractAddress: "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
     maycContractAddress: "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
